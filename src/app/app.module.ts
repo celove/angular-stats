@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { BaseComponent } from './base/base.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TelaInicialComponent,
-    BaseComponent
+    BaseComponent,
+    TelaInicialComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
