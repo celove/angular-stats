@@ -14,13 +14,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseComponent,
     TelaInicialComponent,
-    CadastroComponent
+    CadastroComponent,
+    MainNavComponent
   ],
   imports: [
     AppRoutingModule,
@@ -33,6 +37,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatSidenavModule,
     MatToolbarModule,
     MatTableModule,
+    LayoutModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

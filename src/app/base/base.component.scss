@@ -1,6 +1,8 @@
 .has-text-centered {
     display: flex;
-    margin-right: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 38px;
 }
 
 .container {
@@ -15,11 +17,20 @@
 }
 
 .footer {
-  height: 64px;
+  margin-top: -38px;
+  height: 38px;
+  position: sticky;
+  background-color: #3f51b5;
 }
 
 .body-container {
     height: calc(100% - 64px) !important;
-  }
+}
 
-  .side-container {    height: calc(100% - 64px); }
+.texto-footer {
+    font-size: large;
+    font-family: monospace;
+    place-self: center;
+    padding-right: 12px;
+}
+

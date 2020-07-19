@@ -1,32 +1,15 @@
-<mat-drawer-container class="side-container" autosize>
-  <mat-drawer [mode]="'over'" #drawer class="sidenav" mode="side">
-    <button (click)="navigateCadastro()" color="primary" mat-raised-button>Cadastro</button>
-  </mat-drawer>
-
-  <mat-toolbar>
-    <button mat-icon-button class="example-icon" (click)="drawer.toggle()"
-      aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>FALA DELE STATS</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-  <div class="body-container">
-    <router-outlet></router-outlet>
-  </div>
-
-  <div class="footer">
-    <footer>
-      <div class="container">
-        <mat-toolbar>
-          <div class="content has-text-centered">
-            Contate-nos via email: <div>
-              <mat-icon>mail_outline</mat-icon> <i> faladele@tutips.com.br </i>
-              <mat-icon>mail_outline</mat-icon>
-            </div>
+<div class="body-container">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+  <footer>
+    <div class="container">
+        <div class="content has-text-centered">
+          <div class="texto-footer">Contate-nos via email. 
+            faladele@tutips.com.br
           </div>
-        </mat-toolbar>
+          <mat-icon style="place-self: center;">mail_outline</mat-icon>
         </div>
-    </footer>
-  </div>
-</mat-drawer-container>
+    </div>
+  </footer>
+</div>

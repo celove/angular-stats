@@ -1,0 +1,27 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 220px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+b {
+  font-size: larger;
+}
+
+@media (min-width: 20ppx) {
+  .sidenav {
+    display: none;
+  }
+}
