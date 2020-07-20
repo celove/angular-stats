@@ -1,6 +1,7 @@
 import { Jogo } from './../model/jogo';
 import { StatsService } from './../service/stats.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -10,17 +11,34 @@ import { Component, OnInit } from '@angular/core';
 export class TelaInicialComponent implements OnInit {
 
   jogo: Jogo[] = [];
-  nomeColunas = ['jogador1', 'gols1', 'jogador2', 'gols2'];
+  nomeColunas = ['jogador1', 'time1', 'gols1', 'jogador2', 'time2', 'gols2'];
+  jogadores = ['Labo', 'Bolo'];
+  jogador1;
+  jogador2;
+  times = ['time1', 'time2'];
+  time1;
+  time2;
+  filtroForm: FormGroup;
 
-  constructor(statsService: StatsService) {
+  constructor(private statsService: StatsService) {
     statsService.getJogos().subscribe((resp: Jogo[]) => {
       this.jogo = resp;
-      console.log(this.jogo[0]);
+      console.log(resp);
     });
   }
 
   ngOnInit() {
-    console.log('tela inicial');
+    this.filtroForm = new FormGroup({
+      jogador1: new FormControl(),
+      time1: new FormControl()
+    });
+  }
+
+  onFilter() {
+    console.log('passou');
+    this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
+      this.jogo = resp;
+    });
   }
 
 }

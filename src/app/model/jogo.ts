@@ -1,10 +1,6 @@
 export class Jogo {
-    jogador1: string;
-    jogador2: string;
-    time1: string;
-    time2: string;
-    gols1: string;
-    gols2: string;
-    createdAt: string;
-    updatedAi: string;
+
+    constructor(public jogador1 = '', public jogador2 = '', public time1 = '', public time2 = '',
+                public gols1 = '', public gols2 = '', public createdAt = '', public updatedAt = '') {
+    }
 }

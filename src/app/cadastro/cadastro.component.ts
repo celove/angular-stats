@@ -1,4 +1,9 @@
+import { Campeonato } from './../model/campeonato';
 import { Component, OnInit } from '@angular/core';
+import { Jogo } from '../model/jogo';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { StatsService } from '../service/stats.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,9 +12,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor() { }
+  jogo: Jogo = new Jogo();
+  jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22'];
+  jogador1;
+  jogador2;
+  campeonatos: Campeonato[] = [
+    new Campeonato('Premier League',
+      ['Arsenal PL', 'Chelsea PL', 'Liverpool PL', 'Manchester City PL', 'Manchester United PL', 'Tottenham PL']),
+    new Campeonato('Champions 1', ['Real Madrid', 'Barcelona', 'Liverpool', 'Manchester City', 'PSG']),
+    new Campeonato('Champions 2', ['AC Milan', 'Arsenal', 'Chelsea', 'Inter de Milao', 'Napoli']),
+    new Campeonato('Selecoes', ['Brasil', 'Franca', 'Inglaterra', 'Italia', 'Holanda'])
+  ];
+  times = ['time1', 'time2'];
+  time1;
+  time2;
+  gols1;
+  gols2;
+  campeonatoSelecionado = this.campeonatos[0];
+
+  filtroForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private statsService: StatsService, private snackBar: MatSnackBar) {
+    console.log(this.jogo);
+
+    this.filtroForm = formBuilder.group(
+      { ...this.jogo }
+    );
+  }
 
   ngOnInit(): void {
+  }
+
+  onCadastro() {
+    console.log(this.filtroForm.value);
+    this.statsService.cadastroJogo(this.filtroForm).subscribe((resp) => {
+      this.snackBar.open('Jogo criado com sucesso.');
+      this.filtroForm.setValue(new Jogo());
+    });
   }
 
 }
