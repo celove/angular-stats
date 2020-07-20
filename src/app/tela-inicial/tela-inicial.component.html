@@ -1,29 +1,48 @@
 <mat-card class="card-principal">
-    <div class="form-filtro">
-        <form [formGroup]="filtroForm" (ngSubmit)="onFilter()">
-            <mat-form-field appearance="fill">
-                <mat-label>Jogador 1</mat-label>
-                <mat-select [(ngModel)]="jogador1" formControlName="jogador1">
-                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
-                        {{jogador}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Time 1</mat-label>
-                <mat-select [(ngModel)]="time1" formControlName="time1">
-                    <mat-option *ngFor="let time of times" [value]="time">
-                        {{time}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            
-            <button color="primary" mat-mini-fab (submit)="onFilter()" type="submit">
-                <mat-icon>youtube_searched_for</mat-icon>
-            </button>
-        </form>
+
+    <h2 class="titulo"> Filtrar por jogador com determinado time </h2>
+    <div class="filtro">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Campeonato</mat-label>
+            <mat-select [(value)]="campeonatoSelecionado">
+                <mat-option *ngFor="let campeonato of campeonatos" [value]="campeonato">
+                    {{campeonato.nomeCampeonato}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="form-filtro">
+            <form [formGroup]="filtroForm" (ngSubmit)="onFilter()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Jogador 1</mat-label>
+                    <mat-select [(ngModel)]="jogador1" formControlName="jogador1">
+                        <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                            {{jogador}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Time 1</mat-label>
+                    <mat-select [(ngModel)]="time1" formControlName="time1">
+                        <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                            {{time}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button color="primary" mat-mini-fab (submit)="onFilter()" type="submit">
+                    <mat-icon>youtube_searched_for</mat-icon>
+                </button>
+
+                <button color="primary" mat-mini-fab (click)="onReset()" type="submit">
+                    <mat-icon>not_interested</mat-icon>
+                </button>
+            </form>
+        </div>
     </div>
-    <h2 class="titulo"> Jogos realizados: </h2>
+
+    <h2 class="titulo"> Jogos realizados </h2>
 
     <div class="example-container mat-elevation-z8">
         <table mat-table [dataSource]="jogo">

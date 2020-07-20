@@ -2,6 +2,7 @@ import { Jogo } from './../model/jogo';
 import { StatsService } from './../service/stats.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { Campeonato } from '../model/campeonato';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -11,8 +12,16 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 export class TelaInicialComponent implements OnInit {
 
   jogo: Jogo[] = [];
+  campeonatos: Campeonato[] = [
+    new Campeonato('Premier League',
+      ['Arsenal PL', 'Chelsea PL', 'Liverpool PL', 'Manchester City PL', 'Manchester United PL', 'Tottenham PL']),
+    new Campeonato('Champions 1', ['Real Madrid', 'Barcelona', 'Liverpool', 'Manchester City', 'PSG']),
+    new Campeonato('Champions 2', ['AC Milan', 'Arsenal', 'Chelsea', 'Inter de Milao', 'Napoli']),
+    new Campeonato('Selecoes', ['Brasil', 'Franca', 'Inglaterra', 'Italia', 'Holanda'])
+  ];
+  campeonatoSelecionado = this.campeonatos[0];
   nomeColunas = ['jogador1', 'time1', 'gols1', 'jogador2', 'time2', 'gols2'];
-  jogadores = ['Labo', 'Bolo'];
+  jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22'];
   jogador1;
   jogador2;
   times = ['time1', 'time2'];
@@ -21,9 +30,12 @@ export class TelaInicialComponent implements OnInit {
   filtroForm: FormGroup;
 
   constructor(private statsService: StatsService) {
-    statsService.getJogos().subscribe((resp: Jogo[]) => {
+    this.getAllJogos();
+  }
+
+  private getAllJogos() {
+    this.statsService.getJogos().subscribe((resp: Jogo[]) => {
       this.jogo = resp;
-      console.log(resp);
     });
   }
 
@@ -39,6 +51,10 @@ export class TelaInicialComponent implements OnInit {
     this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
       this.jogo = resp;
     });
+  }
+
+  onReset(){
+    this.getAllJogos();
   }
 
 }

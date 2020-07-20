@@ -32,8 +32,6 @@ export class CadastroComponent implements OnInit {
 
   filtroForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private statsService: StatsService, private snackBar: MatSnackBar) {
-    console.log(this.jogo);
-
     this.filtroForm = formBuilder.group(
       { ...this.jogo }
     );
