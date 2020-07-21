@@ -54,7 +54,7 @@ export class TelaInicialComponent implements OnInit {
         this.jogo = resp;
       })
       :
-      this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
+      this.statsService.getJogosFiltrados(this.filtroForm).subscribe((resp: Jogo[]) => {
         this.jogo = resp;
       });
   }
