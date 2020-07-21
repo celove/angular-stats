@@ -37,15 +37,12 @@ export class CadastroComponent implements OnInit {
     this.filtroForm = formBuilder.group(
       { ...this.jogo }
     );
-    console.log('----------');
-    console.log(this.filtroForm.value);
   }
 
   ngOnInit(): void {
   }
 
   onCadastro() {
-    console.log(this.filtroForm.value);
     this.statsService.cadastroJogo(this.filtroForm).subscribe((resp) => {
       this.snackBar.open('Jogo criado com sucesso.');
       this.filtroForm.setValue(new Jogo());

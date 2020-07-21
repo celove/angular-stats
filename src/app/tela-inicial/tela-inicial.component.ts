@@ -21,11 +21,10 @@ export class TelaInicialComponent implements OnInit {
     new Campeonato('Selecoes', ['Brasil', 'Franca', 'Inglaterra', 'Italia', 'Holanda'])
   ];
   campeonatoSelecionado = this.campeonatos[0];
-  nomeColunas = ['jogador1', 'time1', 'gols1', 'jogador2', 'time2', 'gols2'];
+  nomeColunas = ['data', 'jogador1', 'time1', 'gols1', 'jogador2', 'time2', 'gols2'];
   jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22'];
   jogador1;
   jogador2;
-  times = ['time1', 'time2'];
   time1;
   time2;
   filtroForm: FormGroup;
@@ -65,8 +64,6 @@ export class TelaInicialComponent implements OnInit {
   }
 
   onChangeAdd() {
-    console.log('trocou' + this.isAdd);
-
     this.isAdd ? this.isAdd = false : this.isAdd = true;
   }
 
