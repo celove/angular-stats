@@ -19,10 +19,12 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -42,9 +44,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     LayoutModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatListModule,
+    MatNativeDateModule,
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,

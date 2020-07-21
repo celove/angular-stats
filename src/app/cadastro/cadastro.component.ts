@@ -4,6 +4,7 @@ import { Jogo } from '../model/jogo';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { StatsService } from '../service/stats.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-cadastro',
@@ -28,6 +29,7 @@ export class CadastroComponent implements OnInit {
   time2;
   gols1;
   gols2;
+  data: Date;
   campeonatoSelecionado = this.campeonatos[0];
 
   filtroForm: FormGroup;
@@ -35,6 +37,8 @@ export class CadastroComponent implements OnInit {
     this.filtroForm = formBuilder.group(
       { ...this.jogo }
     );
+    console.log('----------');
+    console.log(this.filtroForm.value);
   }
 
   ngOnInit(): void {
@@ -46,6 +50,11 @@ export class CadastroComponent implements OnInit {
       this.snackBar.open('Jogo criado com sucesso.');
       this.filtroForm.setValue(new Jogo());
     });
+  }
+
+  addEvent(event: MatDatepickerInputEvent<Date>) {
+    // this.data = new Date(`${event.value}`);
+    // this.filtroForm.patchValue({ data: this.data});
   }
 
 }

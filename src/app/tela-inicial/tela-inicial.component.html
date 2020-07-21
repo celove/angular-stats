@@ -31,6 +31,31 @@
                     </mat-select>
                 </mat-form-field>
 
+                <button color="primary" *ngIf="!isAdd" mat-mini-fab (click)="onChangeAdd()">
+                    <mat-icon>add</mat-icon>
+                </button>
+
+                <button color="primary" *ngIf="isAdd" mat-mini-fab (click)="onChangeAdd()">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+
+                <mat-form-field *ngIf="isAdd" appearance="fill">
+                    <mat-label>Jogador 2</mat-label>
+                    <mat-select [(ngModel)]="jogador2" formControlName="jogador2">
+                        <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                            {{jogador}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="isAdd" appearance="fill">
+                    <mat-label>Time 2</mat-label>
+                    <mat-select [(ngModel)]="time2" formControlName="time2">
+                        <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                            {{time}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
                 <button color="primary" mat-mini-fab (submit)="onFilter()" type="submit">
                     <mat-icon>youtube_searched_for</mat-icon>
                 </button>

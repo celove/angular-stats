@@ -11,6 +11,7 @@ import { Campeonato } from '../model/campeonato';
 })
 export class TelaInicialComponent implements OnInit {
 
+  isAdd = false;
   jogo: Jogo[] = [];
   campeonatos: Campeonato[] = [
     new Campeonato('Premier League',
@@ -42,19 +43,31 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit() {
     this.filtroForm = new FormGroup({
       jogador1: new FormControl(),
-      time1: new FormControl()
+      time1: new FormControl(),
+      jogador2: new FormControl(),
+      time2: new FormControl()
     });
   }
 
   onFilter() {
-    console.log('passou');
-    this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
-      this.jogo = resp;
-    });
+    this.isAdd ?
+      this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
+        this.jogo = resp;
+      })
+      :
+      this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
+        this.jogo = resp;
+      });
   }
 
-  onReset(){
+  onReset() {
     this.getAllJogos();
+  }
+
+  onChangeAdd() {
+    console.log('trocou' + this.isAdd);
+
+    this.isAdd ? this.isAdd = false : this.isAdd = true;
   }
 
 }

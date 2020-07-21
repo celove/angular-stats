@@ -35,6 +35,21 @@ export class StatsService {
     return stream;
   }
 
+  public getJogosFiltrados(formGroup: FormGroup) {
+    const jogador1: string = formGroup.value.jogador1;
+    const jogador2: string = formGroup.value.jogador2;
+    const time1: string = formGroup.value.time1;
+    const time2: string = formGroup.value.time2;
+    const stream = new Subject();
+    this.httpClient.get(this.REST_API_SERVER + 'getJogadorTime?' + 'jogador1=' + jogador1 + '&time1=' + time1
+      + '&jogador2=' + jogador2 + '&time2=' + time2).subscribe((resp) => {
+        stream.next(resp);
+      }, (err) => {
+        console.log('erro: ' + err);
+      });
+    return stream;
+  }
+
   public cadastroJogo(formGroup: FormGroup) {
     const stream = new Subject();
     this.httpClient.post(this.REST_API_SERVER + 'cadastroJogo', formGroup.value).subscribe((resp) => {
