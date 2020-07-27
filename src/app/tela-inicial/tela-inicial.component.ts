@@ -21,8 +21,8 @@ export class TelaInicialComponent implements OnInit {
     new Campeonato('Selecoes', ['Brasil', 'Franca', 'Inglaterra', 'Italia', 'Holanda'])
   ];
   campeonatoSelecionado = this.campeonatos[0];
-  nomeColunas = ['data', 'jogador1', 'time1', 'gols1', 'jogador2', 'time2', 'gols2'];
-  jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22'];
+  nomeColunas = ['dataFormatado', 'jogador1', 'time1', 'gols1', 'jogador2', 'time2', 'gols2'];
+  jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22', 'Inquisitor'];
   jogador1;
   jogador2;
   time1;
@@ -50,11 +50,13 @@ export class TelaInicialComponent implements OnInit {
 
   onFilter() {
     this.isAdd ?
-      this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
+      this.statsService.getJogosFiltrados(this.filtroForm).subscribe((resp: Jogo[]) => {
+        console.log('is add true - filtrados');
         this.jogo = resp;
       })
       :
-      this.statsService.getJogosFiltrados(this.filtroForm).subscribe((resp: Jogo[]) => {
+      this.statsService.getJogosFiltrado(this.filtroForm).subscribe((resp: Jogo[]) => {
+        console.log('id Add false - filtrado');
         this.jogo = resp;
       });
   }

@@ -14,7 +14,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 export class CadastroComponent implements OnInit {
 
   jogo: Jogo = new Jogo();
-  jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22'];
+  jogadores = ['Kraftvk', 'Kray', 'Labotryas', 'Meltosik', 'Mooneycb', 'Taka', 'Upcake22', 'Inquisitor'];
   jogador1;
   jogador2;
   campeonatos: Campeonato[] = [
@@ -24,7 +24,6 @@ export class CadastroComponent implements OnInit {
     new Campeonato('Champions 2', ['AC Milan', 'Arsenal', 'Chelsea', 'Inter de Milao', 'Napoli']),
     new Campeonato('Selecoes', ['Brasil', 'Franca', 'Inglaterra', 'Italia', 'Holanda'])
   ];
-  times = ['time1', 'time2'];
   time1;
   time2;
   gols1;

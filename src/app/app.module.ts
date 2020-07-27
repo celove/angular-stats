@@ -22,10 +22,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { GraficoSimplesComponent } from './grafico-simples/grafico-simples.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DialogCampeonatoMediaGolsComponent } from './dialog-campeonato-media-gols/dialog-campeonato-media-gols.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     BaseComponent,
     TelaInicialComponent,
     CadastroComponent,
-    MainNavComponent
+    MainNavComponent,
+    GraficoSimplesComponent,
+    DialogCampeonatoMediaGolsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -45,6 +50,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -56,6 +62,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatToolbarModule,
     MatTableModule,
     ReactiveFormsModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
