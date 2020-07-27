@@ -9,8 +9,8 @@ import { Jogo } from '../model/jogo';
 })
 export class StatsService {
 
-  // private REST_API_SERVER = 'https://stats-fifa-tracker.herokuapp.com/';
-  private REST_API_SERVER = 'http://localhost:3000/';
+  private REST_API_SERVER = 'https://stats-fifa-tracker.herokuapp.com/';
+  // private REST_API_SERVER = 'http://localhost:3000/';
 
   constructor(private httpClient: HttpClient) {
 
